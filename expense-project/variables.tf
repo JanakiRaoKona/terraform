@@ -3,9 +3,10 @@
 # 2 . .tfvars 
 # 3 . default variables 
 
+# ec2 variables
 variable "instance_names" {
 
-  type    = list(any)
+  type    = list(string)
   default = ["db", "backend", "frontend"]
 
 }
@@ -26,11 +27,12 @@ variable "comman_tags" {
   default = {
     Environment = "Dev"
     Project     = "Expense"
-    Terraform  = true
+    Terraform   = true
   }
 
 }
 
+# sg variables
 variable "sg-name" {
   default = "allow_ssh"
 }
@@ -51,4 +53,16 @@ variable "protocol" {
 variable "allow_cidr" {
   type    = list(string)
   default = ["0.0.0.0/0"]
+}
+
+# route-53 record variables 
+variable "zone_id" {
+  type    = string
+  default = "Z00588741QLSSEFMFWBTX"
+
+}
+
+variable "domain_name" {
+  type    = string
+  default = "janakiraodevopsapps.fun"
 }

@@ -1,5 +1,14 @@
 # resource <resource-type> <resource-name>
+resource "aws_instance" "db" {
+  ami                    = "ami-0220d79f3f480ecf5"
+  instance_type          = "t3.micro"
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
+  tags = {
+    Name = "db"
+  }
+
+}
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "allowing ssh access"
@@ -26,13 +35,4 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 
-resource "aws_instance" "db" {
-  ami                    = "ami-0220d79f3f480ecf5"
-  instance_type          = "t3.micro"
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
-  tags = {
-    Name = "db"
-  }
-
-}

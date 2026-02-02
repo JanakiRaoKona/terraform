@@ -1,5 +1,5 @@
 # preference 
-# 1. command line arguments 
+# 1. command line arguments env variables
 # 2 . .tfvars 
 # 3 . default variables 
 
