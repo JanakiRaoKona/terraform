@@ -1,5 +1,21 @@
 # resource <resource-type> <resource-name>
 
+resource "aws_instance" "db" {
+  count         = length(var.instance_names)
+  ami           = var.image_id
+  instance_type = var.instance_names[count.index] == "db" ? "t3.small" : "t3.micro"
+  # left side things are called arguments right side variale values 
+
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+
+  tags = merge(var.comman_tags,
+    { Name   = var.instance_names[count.index]
+      Module = var.instance_names[count.index]
+    }
+  )
+
+}
+
 resource "aws_security_group" "allow_ssh" {
   name        = var.sg-name
   description = var.sg-description
@@ -26,14 +42,4 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 
-resource "aws_instance" "db" {
-  ami           = var.image_id
-  instance_type = var.instance_type
-  # left side things are called arguments right side variale values 
-
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-
-  tags = var.tags
-
-}
 

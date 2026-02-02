@@ -3,6 +3,12 @@
 # 2 . .tfvars 
 # 3 . default variables 
 
+variable "instance_names" {
+
+  type    = list(any)
+  default = ["db", "backend", "frontend"]
+
+}
 
 variable "image_id" {
   type        = string                  # optional
@@ -16,12 +22,11 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
-variable "tags" {
+variable "comman_tags" {
   default = {
-    Name        = "DB"
-    Module      = "DB"
     Environment = "Dev"
     Project     = "Expense"
+    Terraform  = true
   }
 
 }

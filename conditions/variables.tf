@@ -1,9 +1,3 @@
-# preference 
-# 1. command line arguments 
-# 2 . .tfvars 
-# 3 . default variables 
-
-
 variable "image_id" {
   type        = string                  # optional
   description = "RHEL-9 Image ID"       # optional
@@ -26,24 +20,6 @@ variable "tags" {
 
 }
 
-variable "sg-name" {
-  default = "allow_ssh"
-}
-
-variable "sg-description" {
-  default = "allowing ssh access"
-}
-
-variable "ssh-port" {
-  default = 22
-}
-
-variable "protocol" {
-  default = "tcp"
-
-}
-
-variable "allow_cidr" {
-  type    = list(string)
-  default = ["0.0.0.0/0"]
+variable "instance_name" {
+  default  = "backend"
 }
