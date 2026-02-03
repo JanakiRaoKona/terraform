@@ -3,7 +3,7 @@
 resource "aws_instance" "expense" {
   count         = length(var.instance_names)
   ami           = var.image_id
-  instance_type = local.instance_type
+  instance_type = var.instance_names[count.index] == "db" ? "t3.small" : "t3.micro"
   # left side things are called arguments right side variale values 
 
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
