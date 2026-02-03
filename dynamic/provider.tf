@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket         = "devops-s3-drum"
-    key            = "for-each-demo" # need to chamge every folder for unique track key
+    key            = "dynamic-demo" # need to chamge every folder for unique track key
     region         = "us-east-1"
     dynamodb_table = "devops-s3-locking"
   }

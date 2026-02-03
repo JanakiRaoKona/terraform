@@ -13,6 +13,7 @@ resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "allowing ssh access"
 
+  # block 
   ingress {
     from_port   = 22
     to_port     = 22
