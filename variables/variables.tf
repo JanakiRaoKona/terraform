@@ -1,5 +1,5 @@
 # preference 
-# 1. command line arguments env variables
+# 1. command line arguments env variables ex: export TF_VAR_name=value
 # 2 . .tfvars 
 # 3 . default variables 
 
