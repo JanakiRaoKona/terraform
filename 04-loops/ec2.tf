@@ -6,17 +6,14 @@ resource "aws_instance" "roboshop" {
     aws_security_group.comman.id,
     aws_security_group.roboshop[count.index].id
   ]
-
   tags = {
     Name = "${var.project}-${var.environment}-${var.instances[count.index]}"
   }
 
 }
-
 resource "aws_security_group" "comman" {
   name        = "${var.project}-${var.environment}-comman"
   description = "Allow TLS inbound traffic and all outbound traffic"
-
   egress {
     from_port   = 0
     to_port     = 0
@@ -24,14 +21,13 @@ resource "aws_security_group" "comman" {
     cidr_blocks = ["0.0.0.0/0"]
 
   }
-
   tags = {
     Name = "${var.project}-${var.environment}-comman"
   }
 }
-
 resource "aws_security_group" "roboshop" {
-  count  = 10
+  # count  = 10
+  count       = length(var.instances)
   name        = "${var.project}-${var.environment}-${var.instances[count.index]}"
   description = "Component SG for the instance of roboshop"
 
