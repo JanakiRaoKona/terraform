@@ -6,8 +6,8 @@ locals {
     Project     = var.project
     Environment = var.environment
     Terraform   = true
+    vendor      = "azure"
   }
-
 
   ec2_tags = merge(
     local.comman_tags,

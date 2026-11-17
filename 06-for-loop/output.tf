@@ -1,4 +1,3 @@
 output "ec2_output" {
-  value = aws_ami.roboshop
-
+  value = aws_instance.roboshop
 }

@@ -32,6 +32,8 @@ variable "project" {
   default = "roboshop"
 }
 
+
+
 variable "environment" {
   type    = string
   default = "dev"
@@ -42,4 +44,4 @@ variable "environment" {
 #     Name = "${var.project}-${var.environment}"
 #    
 #   }
-# }
+# } 
